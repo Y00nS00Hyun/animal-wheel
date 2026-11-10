@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fcf5f1" />
+  <meta name="description" content="이름만 입력하면 5초 동안 반짝이는 룰렛이 돌아가는 동물상 테스트! 햄스터, 두더지 등 11가지 동물상과 사진을 만나보세요." />
+  <title>너의 동물상은? ✦ 동물상 룰렛</title>
+  <style>
+    :root{font-family:ui-sans-serif,system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#252332;background:#fcf5f1;font-synthesis:none;--ink:#252332;--muted:#797382;--pink:#ff618c;--rose:#fff1f5;--lilac:#9a7afa;--line:#ede4e7}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 0% 0%,#ffe5d7 0,transparent 35%),radial-gradient(ellipse at 100% 16%,#e7e0ff 0,transparent 36%),radial-gradient(ellipse at 50% 95%,#fff6ca 0,transparent 35%),#fcf5f1}
+    button,input{font:inherit}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #9c7bff;outline-offset:4px}button{touch-action:manipulation}
+    .shell{max-width:1190px;margin:0 auto;padding:29px 24px 38px;position:relative}.header{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-size:18px;font-weight:950;letter-spacing:-.06em}.brand-icon{width:39px;height:39px;border-radius:13px;background:#252332;color:white;display:grid;place-items:center;transform:rotate(-10deg);font-size:22px;box-shadow:4px 4px 0 #f6bdc9}.header-pill{background:#fff;border:1px solid #f2dce0;border-radius:999px;color:#92617d;padding:9px 14px;font-size:12px;font-weight:800;box-shadow:0 5px 20px #eacccc38}
+    .hero{text-align:center;margin:26px 0 29px}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.19em;color:#c55e81}.hero h1{font-size:clamp(39px,6.8vw,77px);line-height:1.14;letter-spacing:-.085em;margin:10px 0 11px;font-weight:950}.hero h1 em{color:#fa6488;font-style:normal;position:relative}.hero h1 em:after{content:"";position:absolute;left:4%;bottom:-2px;right:0;height:9px;background:#ffdce5;z-index:-1;border-radius:50%}.hero p{margin:0;color:var(--muted);line-height:1.7;font-size:15px}.sparkle{display:inline-block;color:#f2b840;animation:bob 2.2s ease-in-out infinite}
+    .workspace{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:23px;align-items:stretch}.panel{background:rgba(255,255,255,.93);border:1px solid #f0dfe2;border-radius:30px;box-shadow:0 20px 45px rgba(95,61,88,.075)}
+    .wheel-panel{position:relative;padding:28px 20px 25px;display:flex;flex-direction:column;align-items:center;justify-content:center;isolation:isolate;overflow:hidden}.wheel-panel:after{content:"";position:absolute;width:330px;height:330px;background:#fff5da;filter:blur(80px);border-radius:50%;z-index:-1;opacity:.65}.wheel-kicker{font-size:12px;font-weight:900;letter-spacing:.11em;color:#a57a86;margin-bottom:15px}.wheel-wrap{width:min(100%,495px);aspect-ratio:1;position:relative;display:grid;place-items:center}.wheel-glow{position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(#ff91b2,#f9d06b,#9d84ff,#85d8ea,#ff91b2);filter:blur(18px);opacity:.14;transition:opacity .3s;pointer-events:none}.wheel-panel.spinning .wheel-glow{opacity:.6;animation:glowspin 2.3s linear infinite}.wheel{position:relative;width:100%;height:100%;display:block;filter:drop-shadow(0 13px 0 #ebdcd9)}.pin{position:absolute;z-index:4;top:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-top:46px solid #2b2636;filter:drop-shadow(0 4px 2px #0002)}.pin:before{content:"";position:absolute;top:-52px;left:-8px;border-radius:50%;width:16px;height:16px;background:#2b2636}.wheel-panel.spinning .pin{animation:pinbounce .15s linear infinite alternate}.hub{position:absolute;z-index:3;width:83px;height:83px;border-radius:50%;background:#fffdf9;border:9px solid #2d2737;box-shadow:0 5px 12px #39263625;display:grid;place-items:center;text-align:center}.hub-emoji{font-size:30px;line-height:1;display:block}.hub-time{display:none;font-size:19px;font-weight:950;letter-spacing:-.06em}.wheel-panel.spinning .hub{background:conic-gradient(#ff6c95 var(--progress,0%),#fffefa 0);border-width:8px}.wheel-panel.spinning .hub-emoji{display:none}.wheel-panel.spinning .hub-time{display:block;background:#fff;border-radius:50%;width:100%;height:100%;display:grid;place-items:center}.wheel-caption{text-align:center;color:#9b8590;font-size:12px;line-height:1.6;margin:17px 0 0}.wheel-caption strong{color:#eb668f}.decor{position:absolute;pointer-events:none;font-size:26px;opacity:.75}.decor.left{left:9%;top:11%;transform:rotate(-15deg)}.decor.right{right:8%;top:17%;transform:rotate(12deg)}.decor.bottom{right:14%;bottom:11%;font-size:20px}.wheel-panel.spinning .decor{animation:twinkle .6s infinite alternate}
+    .form-panel{padding:30px 29px 28px;display:flex;flex-direction:column}.step{font-weight:900;letter-spacing:.1em;font-size:12px;color:#fc648d;margin:0 0 14px}.form-panel h2{font-weight:950;letter-spacing:-.07em;font-size:clamp(25px,2.7vw,33px);line-height:1.35;margin:0 0 10px}.subtext{font-size:13px;color:var(--muted);line-height:1.75;margin:0 0 20px}.input-label{display:block;font-size:13px;font-weight:850;margin:0 0 8px}.field{border:1.5px solid #eee0e3;border-radius:15px;background:#fffbfb;display:flex;align-items:center;gap:9px;padding:0 15px;transition:.15s}.field:focus-within{border-color:#ff7e9f;box-shadow:0 0 0 4px #ff92ad2b}.field-icon{font-size:22px}.field input{outline:0;border:0;background:transparent;min-width:0;width:100%;padding:15px 0;font-size:16px;font-weight:700;color:var(--ink)}.field input::placeholder{color:#b2a5ad;font-weight:500}.primary{width:100%;margin-top:13px;padding:17px 14px;border-radius:16px;border:0;color:#fff;background:linear-gradient(112deg,#ff5889,#ff8c74);font-weight:950;font-size:17px;letter-spacing:-.035em;box-shadow:0 6px 0 #efc2c5,0 12px 18px #ff59802a;cursor:pointer;transition:transform .15s,box-shadow .15s,filter .15s}.primary:hover:not(:disabled){transform:translateY(-2px);filter:saturate(1.2)}.primary:active:not(:disabled){transform:translateY(5px);box-shadow:0 1px 0 #efc2c5}.primary:disabled{cursor:wait;opacity:.79}.error{font-size:12px;color:#c13b61;margin:7px 0 0;min-height:17px}.result{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#fff5f6,#fffdf5);border:1.5px dashed #f4d1da;border-radius:22px;margin-top:14px;padding:17px 15px;min-height:199px;position:relative;overflow:hidden}.placeholder-icon{font-size:67px;line-height:1.18;margin-bottom:5px;filter:drop-shadow(0 5px 2px #bd8f9d25)}.placeholder-title{font-size:20px;font-weight:950;letter-spacing:-.05em;margin:4px 0 7px}.placeholder-text{color:#8a7d86;font-size:13px;margin:0;line-height:1.65}.result.spinning .placeholder-icon{animation:wiggle .28s infinite alternate}.result.spinning{background:linear-gradient(105deg,#fff1f6,#fff8ed,#f0ebff,#fff1f6);background-size:300% 100%;animation:shimmer 1.4s linear infinite}
+    .result-card{width:100%;display:none;flex-direction:column;align-items:center}.result.ready{padding:16px}.result.ready .placeholder{display:none}.result.ready .result-card{display:flex;animation:reveal .63s cubic-bezier(.2,1.25,.3,1) both}.photo-frame{position:relative;width:100%;max-width:330px;height:190px;background:radial-gradient(circle at 25% 20%,#fff3bf,#ebd9ff 55%,#fac5d6);border-radius:18px;overflow:hidden;box-shadow:0 9px 22px #75606b26}.photo-frame img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s}.photo-frame.loaded img{opacity:1}.photo-fallback{position:absolute;inset:0;display:grid;place-items:center;font-size:100px;filter:drop-shadow(0 4px 6px #0001)}.photo-frame.loaded .photo-fallback{display:none}.photo-sticker{position:absolute;right:9px;top:9px;color:#3c2940;font-size:11px;font-weight:900;background:#fffef4ec;border-radius:100px;padding:7px 11px;z-index:1;box-shadow:0 3px 9px #0000001c}.photo-credit{font-size:10px;color:#92828e;margin-top:8px;line-height:1.4}.photo-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}.result-label{font-size:11px;color:#e46a8a;letter-spacing:.13em;font-weight:950;margin:14px 0 2px}.animal-name{font-size:27px;font-weight:950;letter-spacing:-.075em;margin:0 0 5px;line-height:1.3}.animal-desc{color:#716a78;font-size:13px;line-height:1.6;margin:0;max-width:320px}.trait{font-size:11px;font-weight:850;color:#a45582;background:#f9e4f0;padding:7px 11px;border-radius:100px;margin-top:10px}.share{margin-top:12px;padding:12px 14px;border:1px solid #ebd2d9;background:white;color:#9f537c;border-radius:13px;font-size:13px;font-weight:850;cursor:pointer;display:none;width:100%}.share.visible{display:block}.share:hover{background:#fff5f8}.footer{text-align:center;color:#998b95;font-size:12px;line-height:1.75;margin:23px 0 0}.credits-link{color:inherit;text-decoration:underline;text-underline-offset:2px}#confetti{position:fixed;z-index:30;inset:0;pointer-events:none;width:100%;height:100%;display:none}
+    @keyframes bob{50%{transform:translateY(-7px) rotate(9deg)}}@keyframes glowspin{to{transform:rotate(360deg)}}@keyframes pinbounce{to{transform:translateX(-50%) rotate(8deg)}}@keyframes twinkle{to{opacity:.1;transform:scale(1.3) rotate(18deg)}}@keyframes wiggle{to{transform:rotate(12deg) scale(1.07)}}@keyframes shimmer{to{background-position:100% 0}}@keyframes reveal{from{opacity:0;transform:scale(.87) translateY(17px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @media(max-width:870px){.workspace{grid-template-columns:1fr;max-width:665px;margin:0 auto}.wheel-panel{padding:22px 18px}.wheel-wrap{width:min(100%,460px)}.form-panel{padding:27px}.hero{margin:23px 0 20px}.result{min-height:180px}.photo-frame{max-width:370px;height:215px}}
+    @media(max-width:460px){.shell{padding:17px 12px 30px}.brand{font-size:15px}.brand-icon{width:35px;height:35px}.header-pill{font-size:10px;padding:7px 9px}.hero h1{font-size:42px}.hero p{font-size:13px}.panel{border-radius:23px}.wheel-panel{padding:18px 10px 20px}.wheel-wrap{width:100%}.pin{border-left-width:14px;border-right-width:14px;border-top-width:36px}.pin:before{top:-42px}.hub{width:68px;height:68px;border-width:7px}.hub-emoji{font-size:25px}.hub-time{font-size:16px}.form-panel{padding:24px 20px}.wheel-kicker{margin-bottom:12px}.photo-frame{height:198px}.decor.left{left:5%;top:7%}.decor.right{right:6%;top:10%}}
+    @media(prefers-reduced-motion:reduce){.sparkle,.decor,.wheel-panel.spinning .wheel-glow,.wheel-panel.spinning .pin,.result.spinning,.result.spinning .placeholder-icon{animation:none!important}.result.ready .result-card{animation:none}.photo-frame img{transition:none}}
+  </style>
+</head>
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <main class="shell">
+    <header class="header">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">🐾</span> ANIMAL FACE CLUB</div>
+      <span class="header-pill">✨ 동물상 11종 업데이트!</span>
+    </header>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="eyebrow">WHO IS YOUR ANIMAL TWIN?</div>
+      <h1 id="page-title">너의 <em>동물상</em>은? <span class="sparkle" aria-hidden="true">✳</span></h1>
+      <p>이름만 입력하면 운명의 룰렛이 5초 동안 빙글빙글!<br />나와 닮은 동물 친구를 만나보세요.</p>
+    </section>
+    <div class="workspace">
+      <section class="panel wheel-panel" id="wheel-panel" aria-label="동물상 룰렛">
+        <span class="decor left" aria-hidden="true">✧</span><span class="decor right" aria-hidden="true">✦</span><span class="decor bottom" aria-hidden="true">✳</span>
+        <div class="wheel-kicker">✦ 11 ANIMAL TYPES ✦</div>
+        <div class="wheel-wrap">
+          <div class="wheel-glow" aria-hidden="true"></div>
+          <canvas class="wheel" id="wheel" role="img" aria-label="고양이, 강아지, 토끼, 여우, 곰, 사슴, 수달, 햄스터, 펭귄, 판다, 두더지로 구성된 룰렛"></canvas>
+          <div class="pin" aria-hidden="true"></div>
+          <div class="hub" aria-hidden="true"><span class="hub-emoji">🐾</span><span class="hub-time" id="countdown">5.0</span></div>
+        </div>
+        <p class="wheel-caption">🎠 <strong>딱 5초!</strong> 두근두근 결과 발표 · 같은 이름은 같은 결과</p>
+      </section>
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <p class="step">01 / FIND YOUR ANIMAL TWIN</p>
+        <h2 id="form-title">어떤 동물 친구가<br />기다리고 있을까요?</h2>
+        <p class="subtext">이름을 적고 버튼을 누르면 화려한 룰렛이 시작돼요.<br />햄스터일까, 두더지일까? 운명에 맡겨보세요!</p>
+        <form id="form" autocomplete="off">
+          <label class="input-label" for="name">당신의 이름</label>
+          <div class="field"><span class="field-icon" aria-hidden="true">✍️</span><input id="name" type="text" name="name" maxlength="24" placeholder="예: 김철수" required enterkeyhint="go" /></div>
+          <button class="primary" id="spin" type="submit">🎡 운명의 룰렛 돌리기!</button>
+          <p class="error" id="error" role="alert"></p>
+        </form>
+        <div class="result" id="result" aria-live="polite" aria-atomic="true">
+          <div class="placeholder" id="placeholder"><div class="placeholder-icon" id="placeholder-icon" aria-hidden="true">🎁</div><p class="placeholder-title" id="placeholder-title">오늘의 동물은 누구?</p><p class="placeholder-text" id="placeholder-text">룰렛을 돌리면 귀여운 동물 사진과<br />당신의 동물상이 공개됩니다!</p></div>
+          <div class="result-card" id="result-card">
+            <div class="photo-frame" id="photo-frame"><div class="photo-fallback" id="photo-fallback" aria-hidden="true">🐾</div><img id="animal-photo" alt="" loading="eager" referrerpolicy="no-referrer" /><span class="photo-sticker" id="photo-sticker">🐾 동물상 발견!</span></div>
+            <div class="photo-credit" id="photo-credit"></div>
+            <p class="result-label">YOUR ANIMAL TWIN</p><h3 class="animal-name" id="animal-name"></h3><p class="animal-desc" id="animal-desc"></p><span class="trait" id="animal-trait"></span>
+          </div>
+        </div>
+        <button type="button" class="share" id="share">📋 결과 문구 복사해서 공유하기</button>
+      </section>
+    </div>
+    <p class="footer">🔒 입력한 이름은 서버에 보내거나 저장하지 않아요. 이름에 따른 재미용 결과이며 실제 외모를 분석하지 않습니다.<br /><a class="credits-link" href="./PHOTO-CREDITS.md" id="credits-link" target="_blank" rel="noopener noreferrer">동물 사진 출처 및 라이선스</a> · 사진은 인터넷 연결 시 Wikimedia Commons에서 불러옵니다.</p>
+  </main>
+  <script>
+    'use strict';
+    const animals = [
+      {name:'고양이상',emoji:'🐱',trait:'시크한 눈빛에 숨은 다정함',description:'첫인상은 도도해도, 알고 보면 의외의 애교쟁이! 조용히 존재감을 드러내는 매력의 소유자.',file:'Cat face.jpg',author:'Khutuck',license:'Public domain'},
+      {name:'강아지상',emoji:'🐶',trait:'햇살처럼 밝은 친화력',description:'한 번 웃으면 주변까지 환해지는 분위기 메이커! 누구에게나 편안하게 다가가는 타입.',file:'Dog portrait.jpg',author:'Owlf',license:'CC BY-SA 4.0',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/'},
+      {name:'토끼상',emoji:'🐰',trait:'말랑말랑 사랑스러움',description:'귀여운 첫인상에 똑 부러지는 반전 매력까지! 가만히 있어도 호감도가 올라가요.',file:'Bunny bunnies rabbits.jpg',author:'Jon Sullivan',license:'Public domain'},
+      {name:'여우상',emoji:'🦊',trait:'눈빛부터 남다른 센스',description:'눈치도 빠르고 재치도 만점! 세련된 아우라로 자꾸만 다시 보게 만드는 사람.',file:'Red fox detailed photo.jpg',author:'Sarvis John / USFWS',license:'Public domain'},
+      {name:'곰상',emoji:'🐻',trait:'포근포근 인간 핫팩',description:'옆에만 있어도 마음이 편안해지는 든든한 매력! 다정함과 안정감이 장점이에요.',file:'Brown-bear.jpg',author:'Paolo Neo',license:'CC0'},
+      {name:'사슴상',emoji:'🦌',trait:'맑고 청초한 분위기',description:'또렷한 눈망울과 부드러운 분위기! 잔잔하지만 은근히 시선을 끄는 타입.',file:'White tailed deer.jpg',author:'Steve Hillebrand / USFWS',license:'Public domain'},
+      {name:'수달상',emoji:'🦦',trait:'호기심 가득 장난꾸러기',description:'유쾌한 표정과 넘치는 호기심! 함께 있으면 웃음이 끊이질 않는 귀염둥이.',file:'Enhydra lutris sea otter face photo.jpg',author:'Menke David / USFWS',license:'Public domain'},
+      {name:'햄스터상',emoji:'🐹',trait:'볼수록 귀여운 말랑이',description:'동글동글 다정한 이미지에 반전의 추진력까지! 자꾸만 챙겨주고 싶어지는 매력.',file:'Roborovski Face.jpg',author:'Justin Paul Barrass',license:'Public domain'},
+      {name:'펭귄상',emoji:'🐧',trait:'엉뚱하지만 진지한 매력',description:'자기만의 리듬으로 세상을 즐기는 타입! 무심한 듯 귀여운 행동이 포인트예요.',file:'A penguin.jpg',author:'Abumuslimjalingo',license:'CC0'},
+      {name:'판다상',emoji:'🐼',trait:'세상 느긋한 힐링 요정',description:'있는 그대로도 사랑스러운 편안한 에너지! 남들까지 미소 짓게 만드는 마성의 타입.',file:'Giant panda animal.jpg',author:'Stolz Gary M / USFWS',license:'Public domain'},
+      {name:'두더지상',emoji:'🐾',trait:'숨겨진 매력의 발굴왕',description:'조용히 자기 할 일을 해내는 든든한 사람! 알아갈수록 귀엽고 반전 매력이 많은 타입.',file:'European Mole HD.JPG',author:'Talpa europaea',license:'Public domain'}
+    ];
+    // 두더지에는 표준 이모지가 없어 룰렛에서는 직접 그린 작은 두더지 그림을 사용합니다.
+    const colors=['#ffd3dd','#ffe1a9','#e6d7ff','#d4f0de','#ffe4cc','#d6e5fd','#f5d2e8','#ffedb2','#d9e8ff','#ddefc9','#eed8cb'];
+    const TAU=Math.PI*2, sector=TAU/animals.length, duration=5000;
+    const wheel=document.querySelector('#wheel'), ctx=wheel.getContext('2d');
+    const panel=document.querySelector('#wheel-panel'), form=document.querySelector('#form'), input=document.querySelector('#name');
+    const button=document.querySelector('#spin'), error=document.querySelector('#error'), result=document.querySelector('#result');
+    const count=document.querySelector('#countdown'), placeholderIcon=document.querySelector('#placeholder-icon'), placeholderTitle=document.querySelector('#placeholder-title'), placeholderText=document.querySelector('#placeholder-text');
+    const frame=document.querySelector('#photo-frame'), photo=document.querySelector('#animal-photo'), fallback=document.querySelector('#photo-fallback');
+    const photoSticker=document.querySelector('#photo-sticker'), credit=document.querySelector('#photo-credit');
+    const animalName=document.querySelector('#animal-name'), animalDesc=document.querySelector('#animal-desc'), animalTrait=document.querySelector('#animal-trait'), share=document.querySelector('#share');
+    let rotation=0, spinning=false, lastName='', lastAnimal=null, currentPhotoToken=0;
+    // 모든 기기에서 같은 이름은 같은 결과. 클라이언트 내 FNV-1a 계산입니다.
+    function hashName(value){let hash=2166136261;for(const letter of value.normalize('NFC').toLowerCase()){hash=Math.imul(hash^letter.codePointAt(0),16777619);}return hash>>>0;}
+    function normalizedName(){return input.value.trim().replace(/\s+/g,' ');}
+    function commonsUrl(file){return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width=840';}
+    function sourceUrl(file){return 'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(file.replaceAll(' ','_'));}
+    function drawMole(x,y,s){
+      ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.fillStyle='#544552';ctx.beginPath();ctx.ellipse(0,2,21,14,0,0,TAU);ctx.fill();ctx.fillStyle='#766474';ctx.beginPath();ctx.ellipse(-13,-10,7,8,0,0,TAU);ctx.ellipse(13,-10,7,8,0,0,TAU);ctx.fill();ctx.fillStyle='#312632';ctx.beginPath();ctx.arc(-9,0,2.5,0,TAU);ctx.arc(9,0,2.5,0,TAU);ctx.fill();ctx.fillStyle='#f6a4ae';ctx.beginPath();ctx.ellipse(0,7,7,5,0,0,TAU);ctx.fill();ctx.restore();
+    }
+    function drawWheel(){
+      const size=wheel.getBoundingClientRect().width||460, dpr=Math.min(window.devicePixelRatio||1,2);
+      wheel.width=Math.round(size*dpr);wheel.height=Math.round(size*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+      const c=size/2,r=c-10;ctx.clearRect(0,0,size,size);
+      ctx.beginPath();ctx.arc(c,c,r+7,0,TAU);ctx.fillStyle='#302737';ctx.fill();
+      ctx.save();ctx.translate(c,c);ctx.rotate(rotation);
+      animals.forEach((a,i)=>{
+        const start=-Math.PI/2+i*sector,end=start+sector,mid=start+sector/2;
+        ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,r-4,start,end);ctx.closePath();ctx.fillStyle=colors[i];ctx.fill();ctx.lineWidth=2.5;ctx.strokeStyle='#fff8fa';ctx.stroke();
+        const x=Math.cos(mid)*r*.68,y=Math.sin(mid)*r*.68;
+        ctx.save();ctx.translate(x,y);ctx.textAlign='center';ctx.textBaseline='middle';
+        if(a.name==='두더지상')drawMole(0,-13,size<370?.58:.7);
+        else {ctx.font=`${size<370?25:31}px "Apple Color Emoji","Segoe UI Emoji",sans-serif`;ctx.fillText(a.emoji,0,-12);}
+        ctx.fillStyle='#302a39';ctx.font=`900 ${size<370?10:13}px "Apple SD Gothic Neo","Malgun Gothic",sans-serif`;ctx.fillText(a.name,0,size<370?15:20);ctx.restore();
+      });ctx.restore();
+      ctx.beginPath();ctx.arc(c,c,r+1,0,TAU);ctx.strokeStyle='#2c2735';ctx.lineWidth=11;ctx.stroke();
+      for(let i=0;i<22;i++){const angle=i*TAU/22;ctx.beginPath();ctx.arc(c+Math.cos(angle)*(r+1),c+Math.sin(angle)*(r+1),size<350?3:4,0,TAU);ctx.fillStyle=(spinning&&i%2)?'#ff72a4':'#fff9c5';ctx.fill();}
+    }
+    function prepPhoto(animal){
+      const token=++currentPhotoToken;frame.classList.remove('loaded');photo.removeAttribute('src');photo.alt=animal.name.replace('상','')+' 사진';
+      fallback.textContent=animal.name==='두더지상'?'🐾':animal.emoji;photoSticker.textContent=animal.name==='두더지상'?'🕳️ 귀염둥이 등장!':'🐾 동물상 발견!';
+      photo.onload=()=>{if(token===currentPhotoToken)frame.classList.add('loaded');};
+      photo.onerror=()=>{if(token===currentPhotoToken)frame.classList.remove('loaded');};
+      photo.src=commonsUrl(animal.file);
+    }
+    function setCredit(animal){
+      credit.replaceChildren();
+      const link=document.createElement('a');link.href=sourceUrl(animal.file);link.target='_blank';link.rel='noopener noreferrer';link.textContent=`사진: ${animal.author} · Wikimedia Commons`;
+      credit.append(link,document.createTextNode(' · '));
+      if(animal.licenseUrl){const lic=document.createElement('a');lic.href=animal.licenseUrl;lic.target='_blank';lic.rel='noopener noreferrer';lic.textContent=animal.license;credit.append(lic);}else credit.append(document.createTextNode(animal.license));
+    }
+    function showResult(name,animal){
+      animalName.textContent=`${name}님은 ${animal.name}!`;
+      animalDesc.textContent=animal.description;
+      animalTrait.textContent='✦ '+animal.trait+' ✦';
+      setCredit(animal);result.classList.remove('spinning');result.classList.add('ready');
+      lastName=name;lastAnimal=animal;share.classList.add('visible');share.textContent='📋 결과 문구 복사해서 공유하기';
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)burstConfetti();
+    }
+    function spinTo(index,name){
+      spinning=true;button.disabled=true;input.disabled=true;button.textContent='🌀 운명 선택 중... 5초!';
+      result.classList.remove('ready');result.classList.add('spinning');share.classList.remove('visible');panel.classList.add('spinning');
+      placeholderIcon.textContent='🎡';placeholderTitle.textContent='두구두구...!';placeholderText.textContent='동물 친구가 곧 모습을 드러냅니다!';
+      const animal=animals[index];prepPhoto(animal);
+      // 포인터(12시) 아래에 목표 동물의 부채꼴 중앙이 오도록 정밀하게 정렬합니다.
+      const target=((TAU-(index+.5)*sector)%TAU+TAU)%TAU;
+      const present=((rotation%TAU)+TAU)%TAU;
+      const delta=(target-present+TAU)%TAU;
+      const from=rotation,to=rotation+TAU*7+delta;
+      const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const start=performance.now();
+      function animate(now){
+        const progress=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-progress,4);
+        rotation=reduceMotion?from:from+(to-from)*eased;
+        count.textContent=(Math.max(0,(duration-(now-start))/1000)).toFixed(1);
+        panel.style.setProperty('--progress',Math.round(progress*100)+'%');
+        drawWheel();
+        if(progress<1){requestAnimationFrame(animate);return;}
+        rotation=target;drawWheel();count.textContent='0.0';
+        spinning=false;panel.classList.remove('spinning');panel.style.setProperty('--progress','0%');
+        button.disabled=false;input.disabled=false;button.textContent='🎡 다시 돌려보기!';
+        showResult(name,animal);
+      }
+      requestAnimationFrame(animate);
+    }
+    form.addEventListener('submit',event=>{
+      event.preventDefault();if(spinning)return;
+      const name=normalizedName();
+      if(!name){error.textContent='이름을 먼저 입력해 주세요.';input.focus();return;}
+      if([...name].length>24){error.textContent='이름은 24자 이내로 입력해 주세요.';return;}
+      error.textContent='';spinTo(hashName(name)%animals.length,name);
+    });
+    share.addEventListener('click',async()=>{
+      if(!lastAnimal)return;
+      const text=`🐾 ${lastName}님의 동물상은 ${lastAnimal.name}!\n✨ ${lastAnimal.trait}\n${lastAnimal.description}\n나도 해보기: ${location.href.split('?')[0].split('#')[0]}`;
+      try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);
+        else{const el=document.createElement('textarea');el.value=text;el.style.position='fixed';el.style.opacity='0';document.body.append(el);el.select();if(!document.execCommand('copy'))throw new Error('copy failed');el.remove();}
+        share.textContent='✅ 복사 완료! 친구에게 보내보세요';setTimeout(()=>share.textContent='📋 결과 문구 복사해서 공유하기',2300);
+      }catch{share.textContent='복사 권한이 없어 실패했어요. 다시 시도해 주세요.';}
+    });
+    // 축하 컨페티: 캔버스에서 잠깐만 그리고 화면 위에 덮습니다.
+    const confetti=document.querySelector('#confetti'),fx=confetti.getContext('2d');let confettiFrame=0;
+    function burstConfetti(){
+      cancelAnimationFrame(confettiFrame);const scale=Math.min(devicePixelRatio||1,2),w=window.innerWidth,h=window.innerHeight;
+      confetti.width=Math.round(w*scale);confetti.height=Math.round(h*scale);fx.setTransform(scale,0,0,scale,0,0);confetti.style.display='block';
+      const palette=['#ff6192','#ffca66','#8d79e8','#68d5bd','#ff8c71','#f9a8d4','#fff4a5'];
+      const pieces=Array.from({length:165},()=>({x:w*.5+(Math.random()-.5)*110,y:h*.35+(Math.random()-.5)*55,vx:(Math.random()-.5)*13,vy:-5-Math.random()*10,gravity:.14+Math.random()*.1,r:3+Math.random()*5,rot:Math.random()*TAU,vr:(Math.random()-.5)*.18,c:palette[Math.floor(Math.random()*palette.length)]}));
+      const launched=performance.now();
+      function framefx(now){const elapsed=now-launched;fx.clearRect(0,0,w,h);fx.globalAlpha=Math.max(0,Math.min(1,(2300-elapsed)/550));for(const p of pieces){p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.rot+=p.vr;fx.save();fx.translate(p.x,p.y);fx.rotate(p.rot);fx.fillStyle=p.c;fx.fillRect(-p.r,-p.r*.6,p.r*2,p.r*1.2);fx.restore();}fx.globalAlpha=1;if(elapsed<2300)confettiFrame=requestAnimationFrame(framefx);else{confetti.style.display='none';fx.clearRect(0,0,w,h);}}
+      confettiFrame=requestAnimationFrame(framefx);
+    }
+    if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>{if(!spinning)drawWheel();}).observe(wheel);
+    else window.addEventListener('resize',()=>{if(!spinning)drawWheel();});
+    drawWheel();
+  </script>
+</body>
+</html>
